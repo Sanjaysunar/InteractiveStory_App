@@ -14,6 +14,6 @@ public class StoryActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         intent.getStringExtra("name");
-        
+
     }
 }
