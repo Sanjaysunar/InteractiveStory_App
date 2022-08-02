@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.sanjay.interactivestory.R;
+import com.sanjay.interactivestory.model.Page;
 
 public class StoryActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
