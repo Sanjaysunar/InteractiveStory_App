@@ -13,7 +13,8 @@ public class StoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_story);
 
         Intent intent = getIntent();
-        intent.getStringExtra("name");
+        intent.getStringExtra(getString(R.string.key_name));
+
 
     }
 }
