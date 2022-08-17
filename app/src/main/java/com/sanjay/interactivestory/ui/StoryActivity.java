@@ -59,6 +59,13 @@ public class StoryActivity extends AppCompatActivity {
         if (page.isFinalPage()){
             choice1Button.setVisibility(View.INVISIBLE);
             choice2Button.setText(R.string.play_again_button_text);
+            choice2Button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //finish();
+                    loadPage(0);
+                }
+            });
         }
         else {
             loadButtons(page);
@@ -66,6 +73,7 @@ public class StoryActivity extends AppCompatActivity {
     }
 
     private void loadButtons(Page page) {
+        choice1Button.setVisibility(View.VISIBLE);
         choice1Button.setText(page.getChoice1().getTextId());
         choice1Button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +83,7 @@ public class StoryActivity extends AppCompatActivity {
             }
         });
 
+        choice2Button.setVisibility(View.VISIBLE);
         choice2Button.setText(page.getChoice2().getTextId());
         choice2Button.setOnClickListener(new View.OnClickListener() {
             @Override
