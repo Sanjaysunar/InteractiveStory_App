@@ -17,6 +17,7 @@ import com.sanjay.interactivestory.model.Story;
 
 public class StoryActivity extends AppCompatActivity {
 
+    private String name;
     private Story story;
     private ImageView storyImageView;
     private TextView storyTextView;
@@ -35,7 +36,7 @@ public class StoryActivity extends AppCompatActivity {
         choice2Button = findViewById(R.id.choice2Button);
 
         Intent intent = getIntent();
-        intent.getStringExtra(getString(R.string.key_name));
+        name = intent.getStringExtra(getString(R.string.key_name));
 
         story = new Story();
         loadPage(0);
@@ -48,5 +49,13 @@ public class StoryActivity extends AppCompatActivity {
 
         Drawable image = ContextCompat.getDrawable(this, page.getImageId());
         storyImageView.setImageDrawable(image);
+
+        String pageText = getString(page.getTextId());
+        // Add name if placeholder included. Won't add if not
+        pageText = String.format(pageText, name);
+        storyTextView.setText(pageText);
+
+        choice1Button.setText(page.getChoice1().getTextId());
+        choice2Button.setText(page.getChoice2().getTextId());
     }
 }
