@@ -16,7 +16,9 @@
         <activity
             android:name=".ui.StoryActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:parentActivityName=".ui.MainActivity">
+        </activity>
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"
