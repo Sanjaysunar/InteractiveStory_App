@@ -16,6 +16,8 @@ import com.sanjay.interactivestory.R;
 import com.sanjay.interactivestory.model.Page;
 import com.sanjay.interactivestory.model.Story;
 
+import java.util.Stack;
+
 public class StoryActivity extends AppCompatActivity {
 
     private String name;
@@ -24,6 +26,7 @@ public class StoryActivity extends AppCompatActivity {
     private TextView storyTextView;
     private Button choice1Button;
     private Button choice2Button;
+    private Stack<Integer> pageStack = new Stack<Integer>();
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -46,7 +49,9 @@ public class StoryActivity extends AppCompatActivity {
     }
 
     private void loadPage(int pageNumber) {
-        Page page = story.getPage(pageNumber);
+        pageStack.push(pageNumber);
+
+        final Page page = story.getPage(pageNumber);
 
         Drawable image = ContextCompat.getDrawable(this, page.getImageId());
         storyImageView.setImageDrawable(image);
@@ -92,5 +97,16 @@ public class StoryActivity extends AppCompatActivity {
                 loadPage(nextPage);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        pageStack.pop();
+        if (pageStack.isEmpty()) {
+            super.onBackPressed();
+        }
+        else{
+            loadPage(pageStack.pop());
+        }
     }
 }
